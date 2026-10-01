@@ -1,0 +1,116 @@
+# --- PYTHON --------------------------------------------------------------------------
+
+[[language]]
+name = "python"
+scope = "source.python"
+injection-regex = "python"
+comment-token = "#"
+language-servers = [
+  # { name = "ty" },
+  { name = "pyright", except-features = [ "format" ] },
+  { name = "ruff" },
+  { name = "typos" },
+  { name = "pyrefly" },
+]
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = "bash", args = ["-c", "ruff check --select I --fix - | ruff format -"]}
+# formatter = { command = "ruff", args = ["format", "--stdin-filename", "{}"] }
+auto-format = true
+
+[language-server.ty]
+command = "ty"
+args = ["server"]
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language-server.pyright.config]
+venvPath = "."
+venv = ".venv"
+pythonPath = ".venv/bin/python"
+
+[language-server.pyright.config.python.analysis]
+typeCheckingMode = "standard"
+autoImportCompletions = true
+extraPaths = [ "src" ]
+
+[language-server.ruff]
+command = "/opt/homebrew/bin/ruff"
+args = ["server"]
+
+[language-server.pyrefly]
+command = "pyrefly"
+args = ["lsp"]
+
+# --- RUST ----------------------------------------------------------------------------
+
+[[language]]
+name = "rust"
+rulers = [80, 100]
+
+[language-server.rust-analyzer.config]
+check.command = "clippy"
+cargo.allFeatures = true
+
+# --- MARKDOWN ------------------------------------------------------------------------
+
+[[language]]
+name = "markdown"
+formatter = { command = "dprint", args = ["fmt", "--stdin", "md"] }
+language-servers = [ "marksman", "typos"]
+text-width = 80
+rulers = [80]
+indent = { tab-width = 4, unit = "    " }
+auto-format = true
+
+# --- YAML ----------------------------------------------------------------------------
+
+[[language]]
+name = "yaml"
+formatter = { command = "dprint", args = ["fmt", "--stdin", "yaml" ]}
+file-types = ["yaml", "yml"]
+text-width = 80
+rulers = [80]
+auto-format = true
+
+# --- TYPST ---------------------------------------------------------------------------
+
+[[language]]
+name = "typst"
+formatter = { command = "typstyle" }
+auto-format = true
+text-width = 80
+rulers = [80]
+language-servers = ["tinymist", "typos"]
+
+[language-server.tinymist]
+command = "tinymist"
+
+[language-server.tinymist.config]
+# Preview
+preview.background.enabled = true
+preview.background.args = ["--data-plane-host=127.0.0.1:23635", "--invert-colors=never", "--open"]
+# Linting
+lint.enabled = true
+lint.when = "onType"
+formatterMode = "typstyle"
+
+# --- SQL -----------------------------------------------------------------------------
+
+[[language]]
+name = "sql"
+auto-format = true
+language-servers = ["sqls"]
+
+[language-server.sqls]
+args = ["--stdio"]
+command = "sqls"
+
+# --- GENERIC -------------------------------------------------------------------------
+
+# Spell checker
+[language-server.typos]
+command = "typos-lsp --exclude='tre'"
+environment = {"RUST_LOG" = "error"}
+config.diagnosticSeverity = "Warning"
