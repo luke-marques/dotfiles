@@ -1,0 +1,36 @@
+[user]
+	name = "{{ .name.first }} {{ .name.last }}"
+	email = "{{ if .isWorkMachine }}{{ .email.work }}{{ else }}{{ .email.personal.main }}{{ end }}"
+[push]
+	default = current
+[pull]
+	rebase = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[init]
+	defaultBranch = main
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+[core]
+	pager = delta
+[delta]
+    navigate = true    
+    light = false      
+    side-by-side = true  
+    # line-numbers = true   
+    # features = decorations	 
+[merge]
+    conflictstyle = diff3 # or zdiff3
+[diff]
+    colorMoved = default
+	algorithm = patience
+

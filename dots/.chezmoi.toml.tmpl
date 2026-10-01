@@ -1,0 +1,13 @@
+{{- $machineTypes := list "personal" "work" -}}
+{{- $machineType := promptChoiceOnce
+    . "machineType"
+    "Is this a personal or work machine"
+    $machineTypes
+    "personal"
+-}}
+{{- $isWorkMachine := eq $machineType "work" -}}
+
+sourceDir = {{ joinPath .chezmoi.homeDir ".dotfiles" | quote }}
+
+[data]
+    isWorkMachine = {{ $isWorkMachine }}

@@ -1,0 +1,8 @@
+github.com:
+    git_protocol: https
+    users:
+        {{ .github.username.personal }}:
+{{- if .isWorkMachine }}
+        {{ .github.username.work }}:
+{{- end }}
+    user: {{ if .isWorkMachine }}{{ .github.username.work }}{{ else }}{{ .github.username.personal }}{{ end }}
