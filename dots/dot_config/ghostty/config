@@ -1,0 +1,29 @@
+theme = dark:kanagawa-dragon,light:Alabaster
+
+font-family = ""
+font-family = "Berkeley Mono"
+font-size = 14.5
+font-codepoint-map = U+2500-U+257F=JetBrains Mono
+
+title = " "
+
+window-padding-x = 3
+window-padding-y = 3
+window-padding-balance = true
+
+window-colorspace = display-p3
+macos-titlebar-style = hidden
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+
+cursor-style = block
+shell-integration-features = no-cursor
+
+mouse-hide-while-typing = true
+
+keybind = opt+3=text:#
+
+fullscreen = true
+
+# background-opacity = 0.9
+# background-blur-radius = 5
