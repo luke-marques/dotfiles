@@ -1,0 +1,26 @@
+# macOS metadata and editor temporary files
+.DS_Store
+._*
+*.swp
+*.swo
+*~
+
+# Plaintext fonts and archives (encrypted *.zip.age files remain trackable)
+*.otf
+*.ttf
+*.woff
+*.woff2
+*.zip
+
+# Local private keys and secrets
+key
+key.txt
+*.key
+*.pem
+.env
+.env.*
+!.env.example
+/dots/keys/
+
+# Generated Homebrew bundle metadata
+Brewfile.lock.json
