@@ -6,12 +6,3 @@ last = "Marques"
 [username]
 personal = "luke"
 work = "luke.marques"
-
-[email]
-work = "74625391+luke-marques@users.noreply.github.com"
-
-[email.personal]
-main = "hello@lukemarques.com"
-accounts = "accounts@lukemarques.com"
-gmail = "luke.o.marques@gmail.com"
-

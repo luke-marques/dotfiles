@@ -1,6 +1,10 @@
 [user]
 	name = "{{ .name.first }} {{ .name.last }}"
-	email = "{{ if .isWorkMachine }}{{ .email.work }}{{ else }}{{ .email.personal.main }}{{ end }}"
+	email = {{ if .isWorkMachine }}{{ .workEmail | quote }}{{ else }}{{ .github.email.personal | quote }}{{ end }}
+{{ if .isWorkMachine -}}
+[include]
+	path = "~/.config/git/identity"
+{{ end -}}
 [push]
 	default = current
 [pull]
@@ -33,4 +37,3 @@
 [diff]
     colorMoved = default
 	algorithm = patience
-

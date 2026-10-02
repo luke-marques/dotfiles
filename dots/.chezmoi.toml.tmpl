@@ -6,8 +6,14 @@
     "personal"
 -}}
 {{- $isWorkMachine := eq $machineType "work" -}}
+{{- $personalEmail := promptStringOnce . "personalEmail" "Personal email" | trim -}}
+{{- if not (regexMatch "^[^[:space:]@]+@[^[:space:]@]+$" $personalEmail) }}{{ fail "Enter a non-empty personal email without whitespace" }}{{ end -}}
+{{- $workEmail := "" -}}
+{{- if $isWorkMachine -}}
+    {{- $workEmail = promptStringOnce . "workEmail" "Work Git email" | trim -}}
+    {{- if not (regexMatch "^[^[:space:]@]+@[^[:space:]@]+$" $workEmail) }}{{ fail "Enter a non-empty work Git email without whitespace" }}{{ end -}}
+{{- end -}}
 
-sourceDir = {{ joinPath .chezmoi.homeDir ".dotfiles" | quote }}
 encryption = "age"
 
 [age]
@@ -17,3 +23,7 @@ encryption = "age"
 [data]
     machineType = {{ $machineType | quote }}
     isWorkMachine = {{ $isWorkMachine }}
+    personalEmail = {{ $personalEmail | quote }}
+{{ if $isWorkMachine -}}
+    workEmail = {{ $workEmail | quote }}
+{{ end -}}
