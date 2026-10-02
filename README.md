@@ -23,13 +23,14 @@ package and font setup (for MacOS only currently).
    installed automatically if missing.
 
 3. Install chezmoi and apply this repo; choose **personal** or **work** when
-   prompted:
+   prompted. Enter your personal email, plus your work Git email on work machines.
+   Emails are saved only in local chezmoi configuration:
 
    ```sh
    sh -c "$(curl -fsLS https://get.chezmoi.io)" -- \
      -b "$HOME/.local/bin" \
      init --source "$HOME/.dotfiles" --apply \
-     https://github.com/luke-marques/config.git
+      https://github.com/luke-marques/dotfiles.git
    ```
 
    [Official installation docs](https://www.chezmoi.io/install/#one-line-binary-install).
@@ -46,6 +47,14 @@ package and font setup (for MacOS only currently).
 
 5. Authenticate GitHub with `gh auth login`.
 
+   Personal Git commits use `74625391+luke-marques@users.noreply.github.com`,
+   independently of the personal email entered at init.
+
+   On work machines, log in to both accounts. Use `gh personal` or `gh work`
+   to switch account and Git email together. The choice survives `chezmoi apply`;
+   repository-specific Git emails still take precedence. Personal machines have
+   no switching aliases or work email configuration.
+
 ## Sync
 
 ```sh
@@ -58,3 +67,7 @@ Edit managed files under `~/.dotfiles/dots/`, then commit and push to share
 changes. Package changes in the Brewfile template are installed on the next
 apply. To change the machine choice, run `chezmoi init --prompt`, then
 `chezmoi apply`.
+
+Existing machines: run `chezmoi init` once to supply emails, then `chezmoi apply`.
+Use `chezmoi init --prompt` to change saved emails; on work machines, run the
+appropriate switching alias after applying to refresh an existing email override.
