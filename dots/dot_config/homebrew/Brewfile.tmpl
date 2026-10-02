@@ -1,3 +1,9 @@
+tap "homebrew/bundle"
+tap "homebrew/services"
+
+# Terminal code review (tuicr)
+tap "agavra/tap", trusted: { formulae: ["tuicr"] }
+
 # Git and Github
 brew "git"
 brew "git-lfs"
@@ -10,6 +16,10 @@ brew "yazi"
 brew "zellij"
 brew "scooter"
 brew "lazygit"
+brew "eza"
+brew "fish"
+brew "tuicr"
+brew "zoxide"
 
 # Language servers and formatters
 brew "pyright"
@@ -22,5 +32,6 @@ brew "typos-lsp"
 # Casks only installed on personal machines
 {{ if not .isWorkMachine -}}
 cask "ghostty"
+cask "aerospace"
 {{ end -}}
 
