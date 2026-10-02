@@ -8,6 +8,11 @@
 {{- $isWorkMachine := eq $machineType "work" -}}
 
 sourceDir = {{ joinPath .chezmoi.homeDir ".dotfiles" | quote }}
+encryption = "age"
+
+[age]
+    identity = {{ joinPath .chezmoi.homeDir ".config/chezmoi/key" | quote }}
+    recipient = "age1fsurjn3gejzrd4wwmv5ymnxnuac8w9sx59ulaj0wfy5uph3yv56s9fnnc8"
 
 [data]
     isWorkMachine = {{ $isWorkMachine }}
