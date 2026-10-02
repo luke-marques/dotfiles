@@ -1,0 +1,9 @@
+{{ if eq .chezmoi.os "darwin" }}
+["Library/Fonts"]
+    type = "archive"
+    url = {{ printf "file://%s/fonts/BerkeleyMono.zip.age" .chezmoi.workingTree | quote }}
+    encrypted = true
+    format = "zip"
+    stripComponents = 2
+    include = ["**/*.otf"]
+{{ end }}
