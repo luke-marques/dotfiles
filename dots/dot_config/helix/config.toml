@@ -1,6 +1,7 @@
-[theme]
-dark = "kanagawa-dragon-improved"
-light = "wolf-alabaster-light-bg"
+# [theme]
+# dark = "kanagawa-dragon-improved"
+# light = "wolf-alabaster-light-bg"
+theme = "kanagawa-dragon-improved"
 
 [editor]
 bufferline = "never"
