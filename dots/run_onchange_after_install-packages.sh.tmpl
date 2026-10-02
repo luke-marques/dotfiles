@@ -1,0 +1,28 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+set -euo pipefail
+
+# Brewfile: {{ include (joinPath .chezmoi.sourceDir "dot_config/homebrew/Brewfile.tmpl") | sha256sum }}
+# Work machine: {{ .isWorkMachine }}
+brew=$(command -v brew || true)
+if [ -z "$brew" ]; then
+    {{ if eq .chezmoi.arch "arm64" -}}
+    brew=/opt/homebrew/bin/brew
+    {{ else -}}
+    brew=/usr/local/bin/brew
+    {{ end -}}
+fi
+
+if [ ! -x "$brew" ]; then
+    {{ if .isWorkMachine -}}
+    printf '%s\n' 'Install Homebrew manually on this work machine, then rerun chezmoi apply.' >&2
+    exit 1
+    {{ else -}}
+    installer=$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)
+    /bin/bash -c "$installer"
+    {{ end -}}
+fi
+
+eval "$("$brew" shellenv)"
+"$brew" bundle --no-upgrade --file={{ joinPath .chezmoi.homeDir ".config/homebrew/Brewfile" | shellQuote }}
+{{ end -}}

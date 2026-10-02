@@ -1,0 +1,26 @@
+# Git and Github
+brew "git"
+brew "git-lfs"
+brew "git-delta"
+brew "gh"
+
+# Terminal Applications
+brew "helix"
+brew "yazi"
+brew "zellij"
+brew "scooter"
+brew "lazygit"
+
+# Language servers and formatters
+brew "pyright"
+brew "ruff"
+brew "pyrefly"
+brew "dprint"
+brew "marksman"
+brew "typos-lsp"
+
+# Casks only installed on personal machines
+{{ if not .isWorkMachine -}}
+cask "ghostty"
+{{ end -}}
+
