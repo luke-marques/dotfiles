@@ -1,0 +1,46 @@
+# Better ls
+alias ls="eza"
+alias la="eza -a"
+alias ll="eza -a --long --icons always --no-filesize --no-user --no-permissions --no-time"
+alias lll="eza -a --long --icons always --no-user --time-style '+%Y-%m-%d %H:%M'"
+alias t="eza -a -T -L 1 --icons always"
+for i in {1..9}; do
+    alias "t$i"="eza -a -T -L $i --icons always"
+done
+alias l="lll"
+
+# Better cd
+cdz() {
+    z "$@" && la
+}
+alias cd=cdz
+
+# Better cat
+alias cat="bat"
+
+# Trash > rm
+alias rm="trash"
+
+# SSH aliases
+alias create="ssh create"
+
+# Dotdrop custom config location
+alias dotdrop="dotdrop --cfg=./dotdrop/config.yaml"
+
+# Zellij
+alias zj="zellij -l session-picker"
+
+# Yazi
+alias y="yazi"
+
+# Python version
+alias wp="which python && python --version"
+
+# SED (Mac OS version has some issues)
+alias sed=gsed
+
+# Hackernews TUI
+alias news="hackernews_tui -c ~/.config/hackernews-tui/config.toml"
+
+# Clean up docker images
+alias drm='docker stop $(docker ps -aq) && docker system prune -af --volumes && docker rmi $(docker images -aq)'

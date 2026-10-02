@@ -1,0 +1,44 @@
+gui:
+  showFileIcons: false
+  nerdFontsVersion: "3"
+  border: single
+  theme:
+    activeBorderColor:
+      - yellow
+    inactiveBorderColor:
+      - "#625e5a"
+    # Border color of focused window when searching in that window
+    searchingActiveBorderColor:
+      - cyan
+      - bold
+    optionsTextColor:
+      - "#625e5a"
+    selectedLineBgColor:
+      - "#393836"
+    inactiveViewSelectedLineBgColor:
+      - bold
+    cherryPickedCommitFgColor:
+      - blue
+    cherryPickedCommitBgColor:
+      - cyan
+    markedBaseCommitFgColor:
+      - blue
+    markedBaseCommitBgColor:
+      - yellow
+    unstagedChangesColor:
+      - red
+    defaultFgColor:
+      - default
+
+keybinding:
+  universal:
+    diffingMenu-alt: <disabled>
+
+git:
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never -s
+
+os:
+  edit: "echo {{filename}} > /tmp/lazygit_out.txt && killall lazygit"
+  editInTerminal: true

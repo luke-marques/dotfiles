@@ -1,0 +1,53 @@
+# Flat key/value schema is intentional: local themes use the same top-level keys
+# that tuicr validates at load time, so the file stays easy to copy and edit.
+panel_bg = "#181616"  # dragonBlack3
+bg_highlight = "#393836"  # dragonBlack5
+fg_primary = "#DCD7BA"  # fujiWhite
+fg_secondary = "#c5c9c5"  # dragonWhite
+fg_dim = "#a6a69c"  # dragonGray
+
+diff_add = "#98BB6C" # springGreen
+diff_add_bg = "#00230c"  # custom green color as winterGreen was too bright
+diff_del = "#C34043"  # autumnRed
+diff_del_bg = "#2d0000"  # custom red color as winterRed was too bright
+diff_context = "#E82424"  # NOT SURE WHAT THIS IS
+diff_hunk_header = "#7E9CD8"  # crystalBlue
+expanded_context_fg = "#625e5a"  # dragonBlack6
+
+syntax_add_bg = "#00230c"  # custom green color as winterGreen was too bright
+syntax_del_bg = "#2d0000"  # custom red color as winterRed was too bright
+# Optional syntax theme, resolved relative to this file.
+syntax_theme = "kanagawa-dragon-syntax.tmTheme"
+
+file_added = "#98BB6C"  # springGreen
+file_modified = "#DCA561"  # autumnYellow
+file_deleted = "#C34043"  # autumnRed
+file_renamed = "#252535"  # winterBlue
+
+reviewed = "#76946A"  # dragonYellow (empty)
+pending = "#625e5a"  # dragonYellow (filled)
+
+comment_note = "#FF9E3B"  # roninYellow
+comment_suggestion = "#7E9CD8"  # crystalBlue
+comment_issue = "#E82424"  # samuraiRed
+comment_praise = "#98BB6C"  # springGreen
+
+border_focused = "#c4b28a"  # dragonYellow
+border_unfocused = "#625e5a"  # dragonBlack6
+status_bar_bg = "#181616"  # dragonBlack3
+cursor_color = "#DCD7BA"  # fujiWhite
+cursor_line_bg = "#223249"  # waveBlue1
+branch_name = "#a292a3"  # dragonPink
+help_indicator = "#b6927b"  # dragonOrange
+
+message_info_fg = "#061827"
+message_info_bg = "#79b8ff"
+message_warning_fg = "#061827"
+message_warning_bg = "#f2c36b"
+message_error_fg = "#061827"
+message_error_bg = "#ff6b8a"
+update_badge_fg = "#181616"  # dragonBlack3
+update_badge_bg = "#FF9E3B"  # roninYellow
+
+mode_fg = "#181616"  # dragonBlack3
+mode_bg = "#7E9CD8"  # crystalBlue

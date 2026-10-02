@@ -1,0 +1,112 @@
+# ZSH Configuration
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# --- Pyenv ---------------------------------------------------------------------------
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# --- Java ----------------------------------------------------------------------------
+
+# JAVA_HOME is set in ~/.zshenv
+
+# --- ZSH PLUGINS ---------------------------------------------------------------------
+
+plugins=(
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
+source $ZSH/oh-my-zsh.sh
+
+# --- ALIASES -------------------------------------------------------------------------
+
+# Include custom aliases from file
+if [ -f ~/.zsh_aliases ]; then
+  source ~/.zsh_aliases
+fi
+
+# --- RUST ----------------------------------------------------------------------------
+
+. "$HOME/.cargo/env"
+
+# --- ZOXIDE --------------------------------------------------------------------------
+
+eval "$(zoxide init zsh)"
+
+# --- DIRENV --------------------------------------------------------------------------
+
+eval "$(direnv hook zsh)"
+
+
+# --- PROMPT CONFIGURATION ------------------------------------------------------------
+
+# Set up Starship prompt
+eval "$(starship init zsh)"
+
+# --- ZELLIJ --------------------------------------------------------------------------
+
+if [[ -z "$ZELLIJ" ]]; then
+  zellij --layout session-picker
+
+  if [[ "$ZELLIJ_AUTO_EXIT" == true ]]; then
+    exit
+  fi
+fi
+
+# --- FUNCTIONS -----------------------------------------------------------------------
+
+# Login to cluster with azure rbac
+function klogin() {
+  if [[ $# -lt 2 ]]; then
+    echo "Usage: $0 <infra> <env> [region]"
+    echo "infra: e.g. ofhtest10"
+    echo "env: dev|int|prod"
+    echo "region: default uksouth"
+    return 1
+  fi
+
+  infra="$1"
+  env="$2"
+  region="${3:-uksouth}"
+
+  az aks get-credentials \
+    --resource-group "${infra}.${env}.${region}_resources" \
+    --name "${infra}-${env}-${region}" \
+    --overwrite-existing
+  kubelogin convert-kubeconfig -l azurecli
+}
+export klogin
+ 
+# --- FIN -----------------------------------------------------------------------------
+
+# npm global path
+export PATH="/Users/luke.marques/.npm-global/bin:$PATH"
+
+# lazydiff
+export PATH=/Users/luke.marques/.lazydiff/bin:$PATH
+
+# --- CLOUDSMITH ----------------------------------------------------------------------
+
+# Generate a personal Cloudsmith API key: https://app.cloudsmith.com/settings/api-keys
+CLOUDSMITH_KEY=$(cat ~/.keys/cloudsmith)
+
+# Local uv commands
+export UV_PREVIEW_FEATURES=native-auth  # Enables Cloudsmith native auth support in uv
+export UV_INDEX_OFH_PACKAGES_USERNAME="token"
+export UV_INDEX_PYPI_MIRROR_USERNAME="token"
+UV_INDEX_OFH_PACKAGES_PASSWORD="$CLOUDSMITH_KEY"
+export UV_INDEX_OFH_PACKAGES_PASSWORD
+UV_INDEX_PYPI_MIRROR_PASSWORD="$CLOUDSMITH_KEY"
+export UV_INDEX_PYPI_MIRROR_PASSWORD
+# NOTE: Run `uv auth login dl.cloudsmith.io`
+
+# Docker
+CLOUDSMITH_OFH_PACKAGES_RO_TOKEN="$CLOUDSMITH_KEY"
+export CLOUDSMITH_OFH_PACKAGES_RO_TOKEN
+CLOUDSMITH_PYPI_RO_TOKEN="$CLOUDSMITH_KEY"
+export CLOUDSMITH_PYPI_RO_TOKEN
+
+unset CLOUDSMITH_KEY

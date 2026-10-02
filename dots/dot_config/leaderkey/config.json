@@ -1,0 +1,245 @@
+{
+  "actions" : [
+    {
+      "key" : "c",
+      "label" : "WhatsApp",
+      "type" : "application",
+      "value" : "/Applications/WhatsApp.app"
+    },
+    {
+      "key" : "f",
+      "label" : "Ghostty",
+      "type" : "application",
+      "value" : "/Applications/Ghostty.app"
+    },
+    {
+      "key" : "j",
+      "label" : "Browser",
+      "type" : "application",
+      "value" : "/Applications/Firefox.app"
+    },
+    {
+      "key" : "l",
+      "label" : "Slack",
+      "type" : "application",
+      "value" : "/Applications/Slack.app"
+    },
+    {
+      "key" : "t",
+      "label" : "Teams",
+      "type" : "application",
+      "value" : "/Applications/Microsoft Teams.app"
+    },
+    {
+      "key" : "o",
+      "label" : "Outlook",
+      "type" : "application",
+      "value" : "/Applications/Microsoft Outlook.app"
+    },
+    {
+      "key" : "s",
+      "label" : "Spotify",
+      "type" : "application",
+      "value" : "/Applications/Spotify.app"
+    },
+    {
+      "key" : " ",
+      "label" : "Raycast",
+      "type" : "application",
+      "value" : "/Applications/Raycast.app"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "s",
+          "label" : "",
+          "type" : "application",
+          "value" : "/Applications/Spotify.app"
+        },
+        {
+          "key" : "e",
+          "label" : "",
+          "type" : "application",
+          "value" : "/Applications/Mail.app"
+        },
+        {
+          "key" : "i",
+          "label" : "",
+          "type" : "application",
+          "value" : "/System/Applications/Music.app"
+        },
+        {
+          "key" : "m",
+          "label" : "",
+          "type" : "application",
+          "value" : "/Applications/Messages.app"
+        }
+      ],
+      "key" : "o",
+      "label" : "Open...",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "f",
+          "label" : "Toggle fullscreen",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/window-management/toggle-fullscreen"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "l",
+              "label" : "Next",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/next-desktop"
+            },
+            {
+              "key" : "h",
+              "label" : "Previous",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/previous-desktop"
+            }
+          ],
+          "key" : "d",
+          "label" : "Desktop...",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "c",
+              "label" : "Center",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/center"
+            },
+            {
+              "key" : "h",
+              "label" : "Left",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/move-left"
+            },
+            {
+              "key" : "j",
+              "label" : "Down",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/move-down"
+            },
+            {
+              "key" : "k",
+              "label" : "Up",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/move-up"
+            },
+            {
+              "key" : "l",
+              "label" : "Right",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/move-left"
+            }
+          ],
+          "key" : "m",
+          "label" : "Move...",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "h",
+              "label" : "Left half",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/left-half"
+            },
+            {
+              "key" : "l",
+              "label" : "Right half",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/right-half"
+            },
+            {
+              "key" : "1",
+              "label" : "First third",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/first-third"
+            },
+            {
+              "key" : "2",
+              "label" : "Center third",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/center-third"
+            },
+            {
+              "key" : "3",
+              "label" : "Last third",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/last-third"
+            },
+            {
+              "key" : "r",
+              "label" : "Reasonable size",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/reasonable-size"
+            },
+            {
+              "key" : "n",
+              "label" : "Almost maximise",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/almost-maximize"
+            },
+            {
+              "key" : "m",
+              "label" : "Maximise",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/maximize"
+            },
+            {
+              "key" : "-",
+              "label" : "Smaller",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/make-smaller"
+            },
+            {
+              "key" : "=",
+              "label" : "Larger",
+              "type" : "url",
+              "value" : "raycast://extensions/raycast/window-management/make-larger"
+            }
+          ],
+          "key" : "r",
+          "label" : "Resize...",
+          "type" : "group"
+        }
+      ],
+      "key" : "w",
+      "label" : "Window...",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "key" : "e",
+          "label" : "",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
+        },
+        {
+          "key" : "p",
+          "label" : "",
+          "type" : "url",
+          "value" : "raycast://confetti"
+        },
+        {
+          "key" : "c",
+          "label" : "",
+          "type" : "url",
+          "value" : "raycast://extensions/raycast/system/open-camera"
+        }
+      ],
+      "key" : "r",
+      "label" : "Raycast...",
+      "type" : "group"
+    }
+  ],
+  "type" : "group"
+}
